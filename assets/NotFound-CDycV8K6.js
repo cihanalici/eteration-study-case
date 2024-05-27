@@ -1,1 +1,0 @@
-import{j as e,L as t}from"./index-BKWdIkDK.js";const s=({message:o="The page you are looking for does not exist."})=>e.jsxs("div",{style:{textAlign:"center",marginTop:"50px"},children:[e.jsx("h1",{children:"404 - Page Not Found"}),e.jsx("p",{"data-testid":"message-container",children:o}),e.jsx(t,{to:"/",children:"Go to Home"})]});export{s as default};
