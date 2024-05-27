@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Spinner from "./components/states/Spinner";
 
-// Lazy load components
 const Home = lazy(() => import("./pages/Home/Home"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail/ProductDetail"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
