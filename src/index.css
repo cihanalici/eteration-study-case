@@ -1,0 +1,203 @@
+body {
+  margin: 0;
+  /* montserrat font family */
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input[type="radio"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #2A59FE;
+  /* Seçilmediğinde mavi kenar */
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="radio"]:checked::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2A59FE;
+  /* Seçildiğinde mavi dolgu */
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+input[type="radio"]:hover {
+  border-color: #2A59FE;
+  /* Hover durumunda daha koyu mavi kenar */
+}
+
+/* Search input with icon */
+.searchDiv {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFF;
+  padding: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+
+  color: #000;
+}
+
+/* Checkbox */
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  border: 2px solid #2A59FE;
+  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+input[type="checkbox"]:checked::before {
+  content: '✔';
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: -4px;
+  left: 2px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #2A59FE;
+  border-color: #2A59FE;
+}
+
+/* Button */
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2A59FE;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: #FFF;
+  cursor: pointer;
+
+
+  width: 100%;
+  border: none;
+}
+
+.primaryButton:hover {
+  background: #4c6fd1;
+}
+
+.primaryButton:disabled {
+  background: #d3d3d3;
+  cursor: not-allowed;
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FF0000;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: #FFF;
+  cursor: pointer;
+
+
+  width: 100%;
+  border: none;
+}
+
+.removeButton:hover {
+  background: #FF3333;
+}
+
+.removeButton:disabled {
+  background: #d3d3d3;
+  cursor: not-allowed;
+}
+
+
+/* No Content div, h1 and p */
+.apiErrorDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 500px;
+}
+
+.apiErrorDiv h1 {
+  font-size: 24px;
+  font-weight: 700;
+  /* red color */
+  color: #FF0000;
+}
+
+.apiErrorDiv p {
+  font-size: 16px;
+  font-weight: 400;
+  /* light red color*/
+  color: #FF0000;
+}
+
+
+/* Spinner */
+.spinFrame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 500px;
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 16px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #2A59FE;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

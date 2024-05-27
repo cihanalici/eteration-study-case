@@ -1,0 +1,102 @@
+/* Navbar */
+.navbarFull {
+    background: #2A59FE;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    align-content: center;
+}
+
+.navbar {
+    display: flex;
+    max-width: 1440px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin: auto;
+    padding: 0 16px;
+}
+
+.navbarLogo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 24px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+/* Search input with icon */
+.navbarSearchDiv {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFF;
+    padding: 8px;
+    width: 350px;
+    max-width: 400px;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.headerSettings {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.headerFrame {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFF;
+    min-width: 100px;
+    /* Sabit genişlik ayarı */
+    justify-content: center;
+    /* İçeriği ortalar */
+}
+
+.headerFrame span {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* RESPONSİVE */
+
+@media (max-width: 768px) {
+    .navbar {
+        gap: 16px;
+    }
+
+    .navbarLogo {
+        font-size: 20px;
+    }
+
+    .navbarSearchDiv {
+        max-width: 300px;
+    }
+
+    .navbarSearchHidden {
+        display: none;
+    }
+
+    .searchInput {
+        font-size: 16px;
+    }
+
+    .headerFrame {
+        font-size: 16px;
+    }
+}

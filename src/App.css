@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  height: 4px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.mainApplicationLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  background: #FFF;
+}
+
+.mainFrame {
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  max-width: 1440px;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.cartsFrame {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 220px;
+}
+
+.cartText {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: start;
+  align-self: baseline;
+  align-content: start;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.63px;
+}
+
+@media screen and (max-width: 1366px) {
+  .mainFrame {
+    max-width: 1280px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .mainFrame {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cartsFrame {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .cartsFrame:first-child {
+    order: 1;
+  }
+
+  .productsFrame {
+    order: 2;
+    width: 100%;
+  }
+
+  .cartsFrame:last-child {
+    order: 3;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cartsFrame {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mainFrame {
+    gap: 16px;
+  }
+}
