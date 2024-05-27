@@ -16,6 +16,8 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install
@@ -25,7 +27,7 @@ jobs:
           VITE_API_KEY: ${{ secrets.VITE_API_URL }}
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: Upload artifacts for deployment
         uses: actions/upload-artifact@v4
         with:
           name: production-files
