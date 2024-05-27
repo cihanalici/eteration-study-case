@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -13,9 +13,7 @@ const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 function App() {
   return (
     <div className="mainApplicationLayout">
-      <HashRouter
-        basename={import.meta.env.DEV ? "/" : "/eteration-study-case/"}
-      >
+      <Router>
         <Navbar />
         <Suspense fallback={<Spinner />}>
           <Routes>
@@ -24,7 +22,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-      </HashRouter>
+      </Router>
       <ToastContainer />
     </div>
   );

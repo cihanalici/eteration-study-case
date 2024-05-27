@@ -7,7 +7,7 @@ export default defineConfig(({ command }) => {
 
   // base: process.env.NODE_ENV === 'production' ? '/eteration-study-case/' : '/',
   const config = {
-    base: "/",
+    base: process.env.NODE_ENV === 'production' ? '/eteration-study-case/' : '/',
     plugins: [react()],
     resolve: {
       alias: {
