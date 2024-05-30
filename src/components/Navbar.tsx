@@ -26,12 +26,18 @@ const Navbar = () => {
             className="searchInput"
             type="text"
             placeholder="Search"
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => {
+              const inputValue = e.target.value;
+              setSearchText(inputValue);
+              if (!inputValue.trim()) {
+                dispatch(filterProductsForSearch(""));
+              }
+            }}
             // on enter key
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
+              if (e.key === "Enter" && searchText.trim()) {
                 dispatch(
-                  filterProductsForSearch(searchText?.toLowerCase()?.trim())
+                  filterProductsForSearch(searchText.toLowerCase()?.trim())
                 );
               }
             }}
