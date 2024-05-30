@@ -4,16 +4,15 @@ import { filterProductsForSearch } from "../rtk/products/productsSlice";
 import { RootState } from "../rtk/store";
 import { useNavigate } from "react-router-dom";
 import "./styles/navbar.css";
+import { useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
   const cartPrice = useSelector(
     (state: RootState) => state.products.totalCartPrice
   );
   const dispatch = useDispatch();
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(filterProductsForSearch(event.target.value.toLowerCase().trim()));
-  };
 
   return (
     <div className="navbarFull">
@@ -27,14 +26,22 @@ const Navbar = () => {
             className="searchInput"
             type="text"
             placeholder="Search"
-            onChange={handleSearch}
+            onChange={(e) => setSearchText(e.target.value)}
+            // on enter key
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                dispatch(
+                  filterProductsForSearch(searchText?.toLowerCase()?.trim())
+                );
+              }
+            }}
           />
         </div>
         <div className="headerSettings">
           <div className="headerFrame">
             <IconBriefcase size={24} color="#FFF" />
             <span style={{ width: "40px", textAlign: "right" }}>
-              {cartPrice ? `${cartPrice.toFixed(2)}₺` : "00.0₺"}
+              {cartPrice ? `${cartPrice?.toFixed(2)}₺` : "00.0₺"}
             </span>
           </div>
           <div className="headerFrame">

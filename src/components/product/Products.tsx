@@ -21,10 +21,27 @@ const Products = () => {
   const filteredProducts = useSelector(
     (state: RootState) => state.products.filteredProducts
   );
+  const searchText = useSelector((state: RootState) => state.products.search);
   const itemsPerPage = 12; // Her sayfada gösterilecek ürün sayısı
   const [currentPage, setCurrentPage] = useState(1);
 
-  const paginatedProducts = (filteredProducts || products)?.slice(
+  console;
+
+  const paginatedSearchProducts = () => {
+    if (filteredProducts?.length > 12) {
+      return filteredProducts?.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      );
+    } else {
+      return filteredProducts;
+    }
+  };
+
+  console.log(filteredProducts);
+  console.log(paginatedSearchProducts);
+
+  const filteredPaginatedProducts = products?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -46,47 +63,49 @@ const Products = () => {
     }
   };
 
-  if (paginatedProducts?.length === 0) {
+  if (filteredPaginatedProducts?.length === 0) {
     return <div className="noProductFound">No product found</div>;
   }
 
   return (
     <div className="productsMain">
       <div className="productsFrame">
-        {paginatedProducts?.map((product) => (
-          <div className="productCard" key={product?.id}>
-            <img
-              src={product?.image || "src/assets/placeholder.png"}
-              alt="product"
-              onClick={() => navigate(`/product/${product?.id}`)}
-            />
-            <span
-              className="productPrice"
-              onClick={() => navigate(`/product/${product?.id}`)}
-            >
-              {product?.price} ₺
-            </span>
-            <span
-              className="productName"
-              onClick={() => navigate(`/product/${product?.id}`)}
-              data-full-name={product?.name}
-            >
-              {truncateProductName(product?.name, 16)}
-            </span>
-            <button
-              className={
-                isProductInCart(product?.id || String(), cart)
-                  ? "removeButton"
-                  : "primaryButton"
-              }
-              onClick={() => productCardHandler(product?.id || String())}
-            >
-              {isProductInCart(product?.id || String(), cart)
-                ? "Remove from Cart"
-                : "Add to Cart"}
-            </button>
-          </div>
-        ))}
+        {(paginatedSearchProducts() || filteredPaginatedProducts)?.map(
+          (product) => (
+            <div className="productCard" key={product?.id}>
+              <img
+                src={product?.image || "src/assets/placeholder.png"}
+                alt="product"
+                onClick={() => navigate(`/product/${product?.id}`)}
+              />
+              <span
+                className="productPrice"
+                onClick={() => navigate(`/product/${product?.id}`)}
+              >
+                {product?.price} ₺
+              </span>
+              <span
+                className="productName"
+                onClick={() => navigate(`/product/${product?.id}`)}
+                data-full-name={product?.name}
+              >
+                {truncateProductName(product?.name, 16)}
+              </span>
+              <button
+                className={
+                  isProductInCart(product?.id || String(), cart)
+                    ? "removeButton"
+                    : "primaryButton"
+                }
+                onClick={() => productCardHandler(product?.id || String())}
+              >
+                {isProductInCart(product?.id || String(), cart)
+                  ? "Remove from Cart"
+                  : "Add to Cart"}
+              </button>
+            </div>
+          )
+        )}
       </div>
       <Pagination
         currentPage={currentPage}

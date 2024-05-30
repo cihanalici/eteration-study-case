@@ -21,6 +21,7 @@ export interface InitialState {
     models: string[];
     loading: boolean;
     error: null;
+    search: string;
     carts: Cart[];
     totalCartPrice: number;
     selectedBrand: string | null;

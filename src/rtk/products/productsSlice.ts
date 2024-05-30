@@ -10,6 +10,7 @@ const initialState: InitialState = {
     brands: [],
     models: [],
     carts: [],
+    search: "",
     totalCartPrice: 0,
     loading: false,
     error: null,
@@ -37,16 +38,12 @@ const productsSlice = createSlice({
         },
         filterProductsForSearch: (state, action: PayloadAction<string>) => {
             // products.name'e göre filtreleme yapılacak
-            // eğer filteredProducts içi doluysa ilk başta oradan filtreleme yapılacak
-            // eğer filteredProducts içi boşsa products içinden filtreleme yapılacak
-            const search = action.payload;
-            let filteredProducts =
-                state?.filteredProducts?.length > 0
-                    ? state?.filteredProducts
-                    : state?.products;
+            state.search = action.payload;
+            let filteredProducts = state?.products;
             filteredProducts = filteredProducts?.filter((product) =>
-                product?.name?.toLowerCase()?.includes(search?.toLowerCase())
+                product?.name?.toLowerCase()?.includes(action.payload?.toLowerCase())
             );
+
             state.filteredProducts = filteredProducts;
         },
         resetFilters: (state) => {
