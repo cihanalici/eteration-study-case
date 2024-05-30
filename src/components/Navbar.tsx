@@ -29,13 +29,13 @@ const Navbar = () => {
             onChange={(e) => {
               const inputValue = e.target.value;
               setSearchText(inputValue);
-              if (!inputValue.trim()) {
+              if (!inputValue?.trim()) {
                 dispatch(filterProductsForSearch(""));
               }
             }}
             // on enter key
             onKeyDown={(e) => {
-              if (e.key === "Enter" && searchText.trim()) {
+              if (e.key === "Enter" && searchText?.trim()) {
                 dispatch(
                   filterProductsForSearch(searchText.toLowerCase()?.trim())
                 );
